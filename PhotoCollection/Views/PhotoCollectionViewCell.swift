@@ -15,10 +15,19 @@ class PhotoCollectionViewCell: UICollectionViewCell {
 
     var photo: Photo? {
         didSet {
-            
+            updateViews()
         }
     }
 
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setUpSubviews()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     func setUpSubviews() {
         // create/configure subview
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -26,34 +35,34 @@ class PhotoCollectionViewCell: UICollectionViewCell {
         // add subview to view hierachy
         addSubview(imageView)
         // create constraints
-        let imageViewYConstraint = NSLayoutConstraint(item: <#T##Any#>,
-                                                      attribute: <#T##NSLayoutConstraint.Attribute#>,
-                                                      relatedBy: <#T##NSLayoutConstraint.Relation#>,
-                                                      toItem: <#T##Any?#>,
-                                                      attribute: <#T##NSLayoutConstraint.Attribute#>,
-                                                      multiplier: <#T##CGFloat#>,
-                                                      constant: <#T##CGFloat#>)
-        let imageViewXConstraint = NSLayoutConstraint(item: <#T##Any#>,
-                                                      attribute: <#T##NSLayoutConstraint.Attribute#>,
-                                                      relatedBy: <#T##NSLayoutConstraint.Relation#>,
-                                                      toItem: <#T##Any?#>,
-                                                      attribute: <#T##NSLayoutConstraint.Attribute#>,
-                                                      multiplier: <#T##CGFloat#>,
-                                                      constant: <#T##CGFloat#>)
-        let imageViewWidthConstraint = NSLayoutConstraint(item: <#T##Any#>,
-                                                          attribute: <#T##NSLayoutConstraint.Attribute#>,
-                                                          relatedBy: <#T##NSLayoutConstraint.Relation#>,
-                                                          toItem: <#T##Any?#>,
-                                                          attribute: <#T##NSLayoutConstraint.Attribute#>,
-                                                          multiplier: <#T##CGFloat#>,
-                                                          constant: <#T##CGFloat#>)
-        let imageViewHeightConstraint = NSLayoutConstraint(item: <#T##Any#>,
-                                                           attribute: <#T##NSLayoutConstraint.Attribute#>,
-                                                           relatedBy: <#T##NSLayoutConstraint.Relation#>,
-                                                           toItem: <#T##Any?#>,
-                                                           attribute: <#T##NSLayoutConstraint.Attribute#>,
-                                                           multiplier: <#T##CGFloat#>,
-                                                           constant: <#T##CGFloat#>)
+        let imageViewYConstraint = NSLayoutConstraint(item: imageView,
+                                                      attribute: .top,
+                                                      relatedBy: .equal,
+                                                      toItem: self,
+                                                      attribute: .top,
+                                                      multiplier: 1,
+                                                      constant: 4)
+        let imageViewXConstraint = NSLayoutConstraint(item: imageView,
+                                                      attribute: .leading,
+                                                      relatedBy: .equal,
+                                                      toItem: self,
+                                                      attribute: .leading,
+                                                      multiplier: 1.0,
+                                                      constant: 4)
+        let imageViewWidthConstraint = NSLayoutConstraint(item: imageView,
+                                                          attribute: .trailing,
+                                                          relatedBy: .equal,
+                                                          toItem: self,
+                                                          attribute: .trailing,
+                                                          multiplier: 1.0,
+                                                          constant: -4)
+        let imageViewHeightConstraint = NSLayoutConstraint(item: imageView,
+                                                           attribute: .height,
+                                                           relatedBy: .equal,
+                                                           toItem: imageView,
+                                                           attribute: .width,
+                                                           multiplier: 1.0,
+                                                           constant: 0)
         // activate constraints
         NSLayoutConstraint.activate([imageViewYConstraint, imageViewXConstraint, imageViewWidthConstraint, imageViewHeightConstraint])
         
@@ -64,5 +73,34 @@ class PhotoCollectionViewCell: UICollectionViewCell {
         // add subview to view hierachry
         addSubview(photoTitleLabel)
         // create constraints
+        let photoTitleLabelYConstraint = NSLayoutConstraint(item: photoTitleLabel,
+                                                            attribute: .top,
+                                                            relatedBy: .equal,
+                                                            toItem: imageView,
+                                                            attribute: .bottom,
+                                                            multiplier: 1.0,
+                                                            constant: 4)
+        
+        let photoTitleLabelXConstraint = NSLayoutConstraint(item: photoTitleLabel,
+                                                            attribute: .leading,
+                                                            relatedBy: .equal,
+                                                            toItem: self,
+                                                            attribute: .leading,
+                                                            multiplier: 1.0,
+                                                            constant: 2)
+        
+        let photoTitleLabelWidthConstraint = NSLayoutConstraint(item: photoTitleLabel,
+                                                                attribute: .trailing,
+                                                                relatedBy: .equal,
+                                                                toItem: self,
+                                                                attribute: .trailing,
+                                                                multiplier: 1.0,
+                                                                constant: -2)
+        // activate constraints
+        NSLayoutConstraint.activate([photoTitleLabelYConstraint, photoTitleLabelXConstraint, photoTitleLabelWidthConstraint])
+    }
+    
+    func updateViews() {
+        
     }
 }
