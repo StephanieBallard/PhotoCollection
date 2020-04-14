@@ -120,6 +120,8 @@ class PhotoDetailViewController: UIViewController, UIImagePickerControllerDelega
         navigationController?.popViewController(animated: true)
     }
     
+    // TODO: Create an updateViews() function that passes the information from the Photo to the image view and text field. Call this function sometime after the photo variable has been given a value from the cellForItem at method in the PhotosCollectionViewController. Again, there are a couple places you could decide to do this.
+    
     private func updateViews() {
         
         guard let photo = photo else {
