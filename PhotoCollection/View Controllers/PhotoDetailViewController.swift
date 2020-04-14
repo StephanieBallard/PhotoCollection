@@ -38,14 +38,13 @@ class PhotoDetailViewController: UIViewController, UIImagePickerControllerDelega
     // MARK: - Private Methods
     
     private func setUpSubviews() {
-//        Add an UIImageView to the view controller's view. You can leave its image empty in this function.
-        var imageView : UIImageView
-        imageView  = UIImageView(frame: CGRect(x: 20, y: 50, width: 100, height: 100))
+        // Add an UIImageView to the view controller's view. You can leave its image empty in this function.
+        let imageView = UIImageView()
+        imageView.contentMode = UIView.ContentMode.scaleAspectFit
         self.view.addSubview(imageView)
 
         // Add a UIButton to the view controller's view. Set its title to "Add Image"
         // Add a target to it that calls the addImage function that already exists in this view controller.
-        
         let addImageButton = UIButton(type: .custom)
         addImageButton.setTitle("Add Image", for: .normal)
         addImageButton.addTarget(self, action: #selector(addImage), for: .touchUpInside)
