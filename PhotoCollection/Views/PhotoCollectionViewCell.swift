@@ -103,9 +103,6 @@ class PhotoCollectionViewCell: UICollectionViewCell {
     func updateViews() {
         guard let photo = photo else { return }
         photoTitleLabel.text = photo.title
-        
-        // TODO: Create an updateViews() function that passes the information from the Photo to the image view and label. (If you need help turning Data into a UIImage look at UIImage's initializers in the documentation. Call this function sometime after the photo variable has been given a value from the cellForItem at method in the PhotosCollectionViewController. There are a couple places you could decide to do this.
-        //imageView.image = photo.imageData(UIImage)
-        
+        imageView.image = UIImage(data: photo.imageData)
     }
 }
