@@ -39,18 +39,26 @@ class PhotoDetailViewController: UIViewController, UIImagePickerControllerDelega
     
     private func setUpSubviews() {
         // Add an UIImageView to the view controller's view. You can leave its image empty in this function.
-        let imageView = UIImageView()
+        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
         imageView.contentMode = UIView.ContentMode.scaleAspectFit
         self.view.addSubview(imageView)
-
+        
         // Add a UIButton to the view controller's view. Set its title to "Add Image"
         // Add a target to it that calls the addImage function that already exists in this view controller.
+        
         let addImageButton = UIButton(type: .custom)
         addImageButton.setTitle("Add Image", for: .normal)
         addImageButton.addTarget(self, action: #selector(addImage), for: .touchUpInside)
         
         // Add a UITextField to the view controller's view.
         // Set its placeholder to something like "Give this photo a title:". You can leave its text empty.
+        let titleTextField: UITextField = UITextField(frame: CGRect(x: 0, y: 0, width: 350, height: 30))
+        titleTextField.placeholder = "Give this photo a title:"
+        titleTextField.text = ""
+        titleTextField.borderStyle = .line
+        titleTextField.backgroundColor = UIColor.white
+        titleTextField.textColor = UIColor.black
+        self.view.addSubview(titleTextField)
         
     }
     
